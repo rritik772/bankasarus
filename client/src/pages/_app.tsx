@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
       }}
     >
       <AppShell
-        padding='md'
+        padding='xs'
         header={<HeaderComponent isHidden={isHidden} setIsHidden={(e: boolean) => setisHidden(e)} />}
         navbar={<NavbarComponent isHidden={isHidden} />}
         navbarOffsetBreakpoint='sm'
