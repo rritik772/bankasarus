@@ -1,7 +1,13 @@
-import { ActionIcon, Flex, Header, Text } from "@mantine/core";
+import { ActionIcon, Burger, Flex, Header, MediaQuery, Text } from "@mantine/core";
 import { IconMoon } from "@tabler/icons-react";
+import { FC } from "react";
 
-export default function HeaderComponent() {
+type HeaderComponentProps = {
+  isHidden: boolean
+  setIsHidden: (e: boolean) => void
+}
+
+const HeaderComponent: FC<HeaderComponentProps> = ({ isHidden, setIsHidden }) => {
   return (
     <Header
       height={70}
@@ -11,19 +17,30 @@ export default function HeaderComponent() {
       <Flex
         justify='space-between'
       >
-        <Text
-          href='/'
-          component='a'
-          c='blue'
-          style={{
-            letterSpacing: '0.7px',
-            fontWeight: '500',
-            fontSize: 'x-large',
-            fontFamily: 'Roboto Slab'
-          }}
-        >
-          Bankasarus
-        </Text>
+        <div>
+          <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+            <Burger
+              opened={!isHidden}
+              onClick={() => setIsHidden(!isHidden)}
+              size="sm"
+              mr="xl"
+            />
+          </MediaQuery>
+
+          <Text
+            href='/'
+            component='a'
+            c='blue'
+            style={{
+              letterSpacing: '0.7px',
+              fontWeight: '500',
+              fontSize: 'x-large',
+              fontFamily: 'Roboto Slab'
+            }}
+          >
+            Bankasarus
+          </Text>
+        </div>
 
         <ActionIcon>
           <IconMoon size={20} />
@@ -33,3 +50,5 @@ export default function HeaderComponent() {
     </Header>
   )
 }
+
+export default HeaderComponent;

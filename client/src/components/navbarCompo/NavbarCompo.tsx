@@ -1,10 +1,15 @@
 import { Navbar, NavLink, ScrollArea, Text } from "@mantine/core";
 import { IconAlien, IconHome, IconLogin, IconUserPlus } from "@tabler/icons-react";
+import { FC, useEffect } from "react";
 
-const NavbarComponent = () => {
+const NavbarComponent: FC<{ isHidden: boolean }> = ({ isHidden }) => {
+  useEffect(() => console.log(isHidden), [isHidden])
   return (
     <Navbar
-      width={{ base: 300 }}
+      width={{
+        base: 300,
+      }}
+      hidden={isHidden}
       hiddenBreakpoint='sm'
     >
       <Navbar.Section>{}</Navbar.Section>
