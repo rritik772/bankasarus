@@ -17,13 +17,15 @@ const HeaderComponent: FC<HeaderComponentProps> = ({ isHidden, setIsHidden }) =>
       <Flex
         justify='space-between'
       >
-        <div>
+        <Flex
+          align='center'
+        >
           <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
             <Burger
               opened={!isHidden}
               onClick={() => setIsHidden(!isHidden)}
               size="sm"
-              mr="xl"
+              mr="md"
             />
           </MediaQuery>
 
@@ -40,7 +42,7 @@ const HeaderComponent: FC<HeaderComponentProps> = ({ isHidden, setIsHidden }) =>
           >
             Bankasarus
           </Text>
-        </div>
+        </Flex>
 
         <ActionIcon>
           <IconMoon size={20} />
