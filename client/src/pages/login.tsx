@@ -23,6 +23,7 @@ export default function Login() {
   return (
     <Flex
       p={8}
+      h='100%'
       justify='center'
       align='center'
     >

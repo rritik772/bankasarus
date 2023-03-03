@@ -1,4 +1,6 @@
+import { BackgroundImage, Box, Center, Container, Text } from '@mantine/core'
 import Head from 'next/head'
+import hero from '/assets/imgs/hero.jpg';
 
 export default function Home() {
   return (
@@ -9,7 +11,39 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className=''></main>
+      <BackgroundImage
+        src='/imgs/hero.jpg'
+        p='md'
+        radius='md'
+        mih={640}
+        style={{
+          backgroundPosition: 'center',
+        }}
+      >
+        <Container>
+
+          <Text
+            c='white'
+            style={{
+              fontSize: 'xx-large',
+              fontWeight: 'bold',
+              textShadow: '1px 1px 10px black'
+            }}
+          >
+            Best in Class Bank
+          </Text>
+          <Text
+            c='white'
+            mt={-13}
+            style={{
+              fontFamily: 'Pacifico',
+              fontSize: 'xxx-large',
+              textShadow: '1px 1px 10px black'
+            }}
+          >Bankasarus</Text>
+
+        </Container>
+      </BackgroundImage>
     </>
   )
 }

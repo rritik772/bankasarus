@@ -41,6 +41,7 @@ export default function Register() {
   return (
     <Flex
       p={8}
+      h='100%'
       justify='center'
       align='center'
     >
