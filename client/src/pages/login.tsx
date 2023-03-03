@@ -14,6 +14,12 @@ export default function Login() {
     }
   })
 
+  const handleSubmit = (e: any): void => {
+    e.preventDefault();
+
+    const email = form.getInputProps('email').value;
+    const password = form.getInputProps('password').value;
+  }
   return (
     <Flex
       p={8}
@@ -40,7 +46,7 @@ export default function Login() {
 
 
         <form
-          onSubmit={() => { }}
+          onSubmit={handleSubmit}
         >
 
           <TextInput
