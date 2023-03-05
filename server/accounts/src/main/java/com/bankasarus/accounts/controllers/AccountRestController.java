@@ -1,14 +1,14 @@
 package com.bankasarus.accounts.controllers;
 
 import com.bankasarus.accounts.model.Account;
+import com.bankasarus.accounts.model.Transaction;
 import com.bankasarus.accounts.services.AccountDataAccessService;
+import com.bankasarus.accounts.services.TransactionDataAccessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,30 +16,36 @@ import java.util.Optional;
 public class AccountRestController {
 
     @Autowired
-    AccountDataAccessService service;
+    AccountDataAccessService accountDataAccessService;
+
+    @Autowired
+    TransactionDataAccessService transactionDataAccessService;
 
     @GetMapping("{id}")
     public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
-        Optional<Account> account = service.findAccountById(id);
+        Optional<Account> account = accountDataAccessService.findAccountById(id);
         return account.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(404).body(null));
     }
 
-    @GetMapping("{id}/mini-statement")
-    public ResponseEntity<Object> getMiniStatement(@PathVariable Long id) {
-        return ResponseEntity.ok("Not Implemented!!!");
+    @GetMapping("{id}/transactions")
+    public ResponseEntity<List<Transaction>> getAllTransaction(@PathVariable Long id) {
+        return ResponseEntity.ok(transactionDataAccessService.getTransactionByAccountId(id));
     }
 
-    @GetMapping("{id}/transactions")
-    public ResponseEntity<Object> getAllTransaction(@PathVariable Long id) {
-        // TODO
-        // get All transaction
-        return ResponseEntity.ok("Not Implemented!!!");
+    @GetMapping("{id}/mini-statement")
+    public ResponseEntity<List<Transaction>> getMiniStatement(@PathVariable Long id) {
+        return ResponseEntity.ok(transactionDataAccessService.getLastSixTransactionsById(id));
     }
 
     @GetMapping("{id}/month-transactions")
-    public ResponseEntity<Object> getThisMonthTransaction(@PathVariable Long id) {
-        return ResponseEntity.ok("Not Implemented");
+    public ResponseEntity<List<Transaction>> getThisMonthTransaction(@PathVariable Long id) {
+        return ResponseEntity.ok(transactionDataAccessService.getTransactionsForThisMonth(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<Transaction> insertTransaction(@RequestBody Transaction transaction) {
+        return ResponseEntity.ok(transactionDataAccessService.insertTransaction(transaction));
     }
 
 }
