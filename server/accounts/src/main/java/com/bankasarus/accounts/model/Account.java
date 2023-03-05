@@ -22,6 +22,9 @@ public class Account {
     @Column(nullable = false)
     private Date dateOpened;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
     @Column(nullable = false, length = 20)
     @Enumerated(EnumType.STRING)
     private AccountType accountType;

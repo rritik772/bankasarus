@@ -16,4 +16,8 @@ public class AccountDataAccessService {
         return repository.findByAccountId(id);
     }
 
+    public Optional<Account> findAccountByEmail(String email) {
+        return repository.findAccountByEmail(email);
+    }
+
 }
