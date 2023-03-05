@@ -29,7 +29,7 @@ public class Transaction {
     private Long accountId;
 
     @Column(nullable = false)
-    private String Email;
+    private String email;
 
     @Column(nullable = false)
     private Double transactionAmt;

@@ -13,7 +13,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     String transactionsAfterDate = "SELECT * from transaction where email = :email AND date >= :date";
     String lastSixTransactions = "SELECT * from transaction where email = :email ORDER BY date DESC LIMIT 6";
 
-    List<Transaction> getTransactionByEmail(String Email);
+    List<Transaction> getTransactionByEmail(String email);
 
     @Query(value = transactionsAfterDate, nativeQuery = true)
     List<Transaction> getTransactionAfterDate(String email, Date date);

@@ -1,16 +1,22 @@
 package com.bankasarus.customer.controllers;
 
-import com.bankasarus.customer.exceptions.UserNotFoundException;
+import com.bankasarus.accounts.model.Account;
+
+import com.bankasarus.accounts.model.Transaction;
 import com.bankasarus.customer.models.Customer;
 import com.bankasarus.customer.services.CustomerDataAccessService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.text.MessageFormat;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -37,19 +43,31 @@ public class CustomerInfoRestController {
     }
 
     @GetMapping("{email}/account")
-    public void getAccountInfo(@PathVariable("email") String email) {
-        if (!isCustomerHavingAccount(email)) return;
+    public ResponseEntity<Account> getAccountInfo(@PathVariable("email") String email) {
+        if (!isCustomerHavingAccount(email))
+            return ResponseEntity.status(404).body(null);
 
-        // TODO
-        // get accounts information from accounts api
+        String uri = MessageFormat.format("http://localhost:8085/{0}/by-email", email);
+
+        try{
+            return ResponseEntity.ok(restTemplate.getForObject(uri, Account.class));
+        } catch (HttpClientErrorException e) {
+            return ResponseEntity.status(500).body(null);
+        }
+
     }
 
     @GetMapping("{email}/transactions")
-    public void getAllTransactions(@PathVariable("email") String email) {
-        if (!isCustomerHavingAccount(email)) return;
+    public ResponseEntity<List<Transaction>> getAllTransactions(@PathVariable("email") String email) {
+        if (!isCustomerHavingAccount(email))
+            return ResponseEntity.status(404).body(null);
 
-        // TODO
-        // get all transactions from accounts api
+        String uri = MessageFormat.format("http://localhost:8085/{0}/transactions", email);
+        try {
+            return ResponseEntity.ok(restTemplate.getForObject(uri, List.class));
+        } catch (HttpClientErrorException e) {
+            return ResponseEntity.status(500).body(null);
+        }
     }
 
 }
