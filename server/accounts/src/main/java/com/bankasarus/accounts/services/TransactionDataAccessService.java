@@ -14,23 +14,23 @@ public class TransactionDataAccessService {
     @Autowired
     TransactionRepository repository;
 
-    public List<Transaction> getTransactionByAccountId(Long id) {
-        return repository.getTransactionByAccountId(id);
+    public List<Transaction> getTransactionByAccountId(String email) {
+        return repository.getTransactionByEmail(email);
     }
 
-    public List<Transaction> getLastSixTransactionsById(Long id) {
-        return repository.getLastSixTransactions(id);
+    public List<Transaction> getLastSixTransactionsById(String email) {
+        return repository.getLastSixTransactions(email);
     }
 
-    public List<Transaction> getTransactionsForThisMonth(Long id) {
+    public List<Transaction> getTransactionsForThisMonth(String email) {
         YearMonth yearMonth = YearMonth.now();
         Date firstOfMonth = Date.valueOf(yearMonth.atDay(1));
 
-        return repository.getTransactionAfterDate(id, firstOfMonth);
+        return repository.getTransactionAfterDate(email, firstOfMonth);
     }
 
-    public List<Transaction> getTransactionsAfter(Long id, Date date) {
-        return repository.getTransactionAfterDate(id, date);
+    public List<Transaction> getTransactionsAfter(String email, Date date) {
+        return repository.getTransactionAfterDate(email, date);
     }
 
     public Transaction insertTransaction(Transaction transaction) {

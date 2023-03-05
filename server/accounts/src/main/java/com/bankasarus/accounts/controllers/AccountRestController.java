@@ -35,19 +35,19 @@ public class AccountRestController {
                 .orElseGet(() -> ResponseEntity.status(404).body(null));
     }
 
-    @GetMapping("{id}/transactions")
-    public ResponseEntity<List<Transaction>> getAllTransaction(@PathVariable Long id) {
-        return ResponseEntity.ok(transactionDataAccessService.getTransactionByAccountId(id));
+    @GetMapping("{email}/transactions")
+    public ResponseEntity<List<Transaction>> getAllTransaction(@PathVariable String email) {
+        return ResponseEntity.ok(transactionDataAccessService.getTransactionByAccountId(email));
     }
 
-    @GetMapping("{id}/mini-statement")
-    public ResponseEntity<List<Transaction>> getMiniStatement(@PathVariable Long id) {
-        return ResponseEntity.ok(transactionDataAccessService.getLastSixTransactionsById(id));
+    @GetMapping("{email}/mini-statement")
+    public ResponseEntity<List<Transaction>> getMiniStatement(@PathVariable String email) {
+        return ResponseEntity.ok(transactionDataAccessService.getLastSixTransactionsById(email));
     }
 
-    @GetMapping("{id}/month-transactions")
-    public ResponseEntity<List<Transaction>> getThisMonthTransaction(@PathVariable Long id) {
-        return ResponseEntity.ok(transactionDataAccessService.getTransactionsForThisMonth(id));
+    @GetMapping("{email}/month-transactions")
+    public ResponseEntity<List<Transaction>> getThisMonthTransaction(@PathVariable String email) {
+        return ResponseEntity.ok(transactionDataAccessService.getTransactionsForThisMonth(email));
     }
 
     @PostMapping

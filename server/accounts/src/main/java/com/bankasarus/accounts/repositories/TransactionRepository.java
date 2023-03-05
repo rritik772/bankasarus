@@ -10,14 +10,14 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-    String transactionsAfterDate = "SELECT * from transaction where account_id = :id AND date >= :date";
-    String lastSixTransactions = "SELECT * from transaction where account_id = :id ORDER BY date DESC LIMIT 6";
+    String transactionsAfterDate = "SELECT * from transaction where email = :email AND date >= :date";
+    String lastSixTransactions = "SELECT * from transaction where email = :email ORDER BY date DESC LIMIT 6";
 
-    List<Transaction> getTransactionByAccountId(Long id);
+    List<Transaction> getTransactionByEmail(String Email);
 
     @Query(value = transactionsAfterDate, nativeQuery = true)
-    List<Transaction> getTransactionAfterDate(Long id, Date date);
+    List<Transaction> getTransactionAfterDate(String email, Date date);
 
     @Query(value = lastSixTransactions, nativeQuery = true)
-    List<Transaction> getLastSixTransactions(Long id);
+    List<Transaction> getLastSixTransactions(String email);
 }
