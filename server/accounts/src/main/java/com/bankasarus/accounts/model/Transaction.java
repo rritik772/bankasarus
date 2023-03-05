@@ -14,6 +14,11 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(
+        indexes = {
+                @Index(name = "email_index", columnList = "email")
+        }
+)
 public class Transaction {
 
     @Id
@@ -22,6 +27,9 @@ public class Transaction {
 
     @Column(nullable = false)
     private Long accountId;
+
+    @Column(nullable = false)
+    private String Email;
 
     @Column(nullable = false)
     private Double transactionAmt;
