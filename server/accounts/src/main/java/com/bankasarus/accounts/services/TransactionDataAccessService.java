@@ -1,6 +1,6 @@
 package com.bankasarus.accounts.services;
 
-import com.bankasarus.accounts.model.Transaction;
+import com.bankasarus.accounts.models.Transaction;
 import com.bankasarus.accounts.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

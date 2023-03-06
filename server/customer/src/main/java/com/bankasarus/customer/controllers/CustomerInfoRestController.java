@@ -1,8 +1,8 @@
 package com.bankasarus.customer.controllers;
 
-import com.bankasarus.accounts.model.Account;
+import com.bankasarus.accounts.models.Account;
 
-import com.bankasarus.accounts.model.Transaction;
+import com.bankasarus.accounts.models.Transaction;
 import com.bankasarus.customer.models.Customer;
 import com.bankasarus.customer.services.CustomerDataAccessService;
 

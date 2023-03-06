@@ -1,7 +1,7 @@
 package com.bankasarus.accounts.repositories;
 
 
-import com.bankasarus.accounts.model.Account;
+import com.bankasarus.accounts.models.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

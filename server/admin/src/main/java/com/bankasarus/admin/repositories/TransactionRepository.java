@@ -1,4 +1,4 @@
-package com.bankasarus.accounts.repositories;
+package com.bankasarus.admin.repositories;
 
 import com.bankasarus.accounts.models.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +12,7 @@ import java.util.List;
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
     String transactionsAfterDate = "SELECT * from transaction where email = :email AND date >= :date";
     String lastSixTransactions = "SELECT * from transaction where email = :email ORDER BY date DESC LIMIT 6";
+    String largestNTransaction = "SELECT * from transaction where email = :email ORDER BY transaction_amt DESC LIMIT :n";
 
     List<Transaction> getTransactionByEmail(String email);
 
@@ -21,5 +22,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query(value = lastSixTransactions, nativeQuery = true)
     List<Transaction> getLastSixTransactions(String email);
 
-    Transaction insertTransaction(Transaction transaction);
+    @Query(value = largestNTransaction, nativeQuery = true)
+    List<Transaction> getLargestNTransactions(String email, int n);
 }

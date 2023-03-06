@@ -1,4 +1,4 @@
-package com.bankasarus.accounts.model;
+package com.bankasarus.accounts.models;
 
 import com.bankasarus.accounts.enums.AccountType;
 import jakarta.persistence.*;
