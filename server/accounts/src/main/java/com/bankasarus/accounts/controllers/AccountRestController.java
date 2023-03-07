@@ -15,6 +15,9 @@ public class AccountRestController {
     @Autowired
     AccountDataAccessService service;
 
+    // TODO
+    // change accountID to emailID
+
     @GetMapping("{id}")
     public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
         Optional<Account> account = service.findAccountById(id);
