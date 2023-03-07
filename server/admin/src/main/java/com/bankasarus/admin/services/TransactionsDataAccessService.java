@@ -1,7 +1,7 @@
 package com.bankasarus.admin.services;
 
 import com.bankasarus.accounts.models.Transaction;
-import com.bankasarus.admin.repositories.AdminTransactionRepository;
+import com.bankasarus.admin.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +9,9 @@ import java.sql.Date;
 import java.util.List;
 
 @Service
-public class AdminTransactionsDataAccessService {
+public class TransactionsDataAccessService {
     @Autowired
-    AdminTransactionRepository repository;
+    TransactionRepository repository;
 
     public List<Transaction> getAllTransactions(String email) {
         return repository.getTransactionByEmail(email);

@@ -14,7 +14,7 @@ import java.util.Optional;
  * CustomerRepository
  */
 @Repository
-public interface AdminCustomerRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
     String allCustomers = "SELECT * FROM customer";
     String birthdayToday = "SELECT * FROM customer where birth_date = CURRENT_DATE";
 

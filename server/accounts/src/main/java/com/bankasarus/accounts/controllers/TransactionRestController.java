@@ -29,9 +29,4 @@ public class TransactionRestController {
         return ResponseEntity.ok(service.getTransactionsForThisMonth(email));
     }
 
-    @PostMapping
-    public ResponseEntity<Transaction> insertTransaction(@RequestBody Transaction transaction) {
-        return ResponseEntity.ok(service.insertTransaction(transaction));
-    }
-
 }

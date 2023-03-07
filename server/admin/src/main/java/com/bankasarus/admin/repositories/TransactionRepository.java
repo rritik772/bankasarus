@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Repository
-public interface AdminTransactionRepository extends JpaRepository<Transaction, Long> {
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
     String transactionsAfterDate = "SELECT * from transaction where email = :email AND date >= :date";
     String lastSixTransactions = "SELECT * from transaction where email = :email ORDER BY date DESC LIMIT 6";
     String largestNTransaction = "SELECT * from transaction where email = :email ORDER BY transaction_amt DESC LIMIT :n";

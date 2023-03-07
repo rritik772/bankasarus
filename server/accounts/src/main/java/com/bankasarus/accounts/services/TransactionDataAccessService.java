@@ -33,9 +33,4 @@ public class TransactionDataAccessService {
         return repository.getTransactionAfterDate(email, date);
     }
 
-    public Transaction insertTransaction(Transaction transaction) {
-        return repository.saveAndFlush(transaction);
-
-    }
-
 }
