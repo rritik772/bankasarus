@@ -16,12 +16,12 @@ public class TransactionRestController {
 
     @GetMapping("{email}/transactions")
     public ResponseEntity<List<Transaction>> getAllTransaction(@PathVariable String email) {
-        return ResponseEntity.ok(service.getTransactionByAccountId(email));
+        return ResponseEntity.ok(service.getTransactionByEmail(email));
     }
 
     @GetMapping("{email}/mini-statement")
     public ResponseEntity<List<Transaction>> getMiniStatement(@PathVariable String email) {
-        return ResponseEntity.ok(service.getLastSixTransactionsById(email));
+        return ResponseEntity.ok(service.getLastSixTransactionsByEmail(email));
     }
 
     @GetMapping("{email}/month-transactions")

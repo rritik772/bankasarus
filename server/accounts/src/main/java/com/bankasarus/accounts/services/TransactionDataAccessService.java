@@ -14,11 +14,11 @@ public class TransactionDataAccessService {
     @Autowired
     TransactionRepository repository;
 
-    public List<Transaction> getTransactionByAccountId(String email) {
+    public List<Transaction> getTransactionByEmail(String email) {
         return repository.getTransactionByEmail(email);
     }
 
-    public List<Transaction> getLastSixTransactionsById(String email) {
+    public List<Transaction> getLastSixTransactionsByEmail(String email) {
         return repository.getLastSixTransactions(email);
     }
 
