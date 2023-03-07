@@ -4,12 +4,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
 	<groupId>com.bankasarus</groupId>
 
 	<artifactId>server</artifactId>
@@ -18,13 +12,17 @@
 
 	<name>BankasarusServer</name>
 	<description>Main server for Bankasarus</description>
+
 	<modules>
 		<module>customer</module>
+		<module>admin</module>
+		<module>accounts</module>
 	</modules>
 
 	<properties>
 		<java.version>19</java.version>
 		<spring.boot.maven.plugin.version>3.0.4</spring.boot.maven.plugin.version>
+		<spring-cloud.version>2022.0.1</spring-cloud.version>
 	</properties>
 
 	<dependencyManagement>
@@ -33,6 +31,13 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
 				<version>${spring.boot.maven.plugin.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>

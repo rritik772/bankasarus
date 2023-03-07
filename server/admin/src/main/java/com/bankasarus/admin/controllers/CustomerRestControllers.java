@@ -1,6 +1,6 @@
 package com.bankasarus.admin.controllers;
 
-import com.bankasarus.admin.services.CustomerDataAccessService;
+import com.bankasarus.admin.services.AdminCustomerDataAccessService;
 import com.bankasarus.customer.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import java.util.List;
 public class CustomerRestControllers {
 
     @Autowired
-    CustomerDataAccessService service;
+    AdminCustomerDataAccessService service;
 
     @GetMapping
     public ResponseEntity<List<Customer>> getAllCustomers() {

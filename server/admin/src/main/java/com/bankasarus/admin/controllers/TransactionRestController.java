@@ -1,7 +1,7 @@
 package com.bankasarus.admin.controllers;
 
 import com.bankasarus.accounts.models.Transaction;
-import com.bankasarus.admin.services.TransactionsDataAccessService;
+import com.bankasarus.admin.services.AdminTransactionsDataAccessService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/admin/transactions")
 public class TransactionRestController {
 
-    TransactionsDataAccessService service;
+    AdminTransactionsDataAccessService service;
 
     @GetMapping("{email}")
     public ResponseEntity<List<Transaction>> getAllTransactions(@PathVariable String email) {

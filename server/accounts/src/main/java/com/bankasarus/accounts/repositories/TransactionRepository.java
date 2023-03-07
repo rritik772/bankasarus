@@ -21,5 +21,4 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query(value = lastSixTransactions, nativeQuery = true)
     List<Transaction> getLastSixTransactions(String email);
 
-    Transaction insertTransaction(Transaction transaction);
 }

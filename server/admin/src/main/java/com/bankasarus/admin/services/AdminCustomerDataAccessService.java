@@ -1,6 +1,6 @@
 package com.bankasarus.admin.services;
 
-import com.bankasarus.admin.repositories.CustomerRepository;
+import com.bankasarus.admin.repositories.AdminCustomerRepository;
 import com.bankasarus.customer.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CustomerDataAccessService {
+public class AdminCustomerDataAccessService {
 
     @Autowired
-    CustomerRepository repository;
+    AdminCustomerRepository repository;
 
     public List<Customer> getAllCustomer() {
         return repository.getAllCustomers();
