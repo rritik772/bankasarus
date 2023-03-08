@@ -3,6 +3,7 @@ package com.bankasarus.accounts.repositories;
 import com.bankasarus.accounts.models.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
@@ -16,9 +17,9 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     List<Transaction> getTransactionByEmail(String email);
 
     @Query(value = transactionsAfterDate, nativeQuery = true)
-    List<Transaction> getTransactionAfterDate(String email, Date date);
+    List<Transaction> getTransactionAfterDate(@Param("email") String email, @Param("email") Date date);
 
     @Query(value = lastSixTransactions, nativeQuery = true)
-    List<Transaction> getLastSixTransactions(String email);
+    List<Transaction> getLastSixTransactions(@Param("email") String email);
 
 }
