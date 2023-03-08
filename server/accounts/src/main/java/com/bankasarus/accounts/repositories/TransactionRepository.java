@@ -17,7 +17,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     List<Transaction> getTransactionByEmail(String email);
 
     @Query(value = transactionsAfterDate, nativeQuery = true)
-    List<Transaction> getTransactionAfterDate(@Param("email") String email, @Param("email") Date date);
+    List<Transaction> getTransactionAfterDate(@Param("email") String email, @Param("date") Date date);
 
     @Query(value = lastSixTransactions, nativeQuery = true)
     List<Transaction> getLastSixTransactions(@Param("email") String email);
