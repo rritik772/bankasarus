@@ -11,11 +11,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     database: postgresql
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
 
 logging:
   level:
